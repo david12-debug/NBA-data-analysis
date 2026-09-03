@@ -1,18 +1,26 @@
 import pandas as pd
 
+import sys
+
 csv_path = 'data/nba_player_stats_2026.csv'
 
 df = pd.read_csv(csv_path)
 
 print("NBA 2025-26 SEASON")
 
-print("Top 5 in total points scored:")
+def exitProgram():
+    sys.exit()
 
-df_total_pts = df.sort_values(by="PTS", ascending=False)
+FEATURES = {
+    "1" : ("Rank Column", None),
+    "2" : ("Longevity", None),
+    "3" : ("Free Throw Merchant", None),
+    "4" : ("Exit", exitProgram),
+}
 
-for i in range(0, 5):
-    player_name = df_total_pts["PLAYER"].iloc[i]
+print("Features Menu:")
 
-    points_scored = df_total_pts["PTS"].iloc[i]
+for key, value in FEATURES.items():
+    featureName = value[0]
 
-    print(f"{i + 1}: {player_name} scored a total of {points_scored} points")
+    print(f"{key}: {featureName}")
