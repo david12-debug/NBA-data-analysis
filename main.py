@@ -6,10 +6,8 @@ df = pd.read_csv(csv_path)
 
 print("NBA 2025-26 SEASON\n")
 
-break_loop = False
-
 def end_program():
-    break_loop = True
+    return True
 
 def view_features():
     print("Features Menu:")
@@ -18,15 +16,20 @@ def view_features():
         feature_name = value[0]
 
         print(f"{key}: {feature_name}")
+    
+    return False
 
 def rank_column():
     print("E")
+    return False
 
 def longevity():
     print("E")
+    return False
 
 def ft_merchant():
     print("E")
+    return False
 
 FEATURES = {
     "1" : ("Rank Column", rank_column),
@@ -38,13 +41,13 @@ FEATURES = {
 
 view_features()
 
-#while True:
-chosen_input = input("\nEnter a number: ")
+while True:
+    chosen_input = input("\nEnter a number: ")
 
-chosen_feature = FEATURES.get(chosen_input)
+    chosen_feature = FEATURES.get(chosen_input)
 
-if chosen_feature != None:
-    chosen_feature[1]()
+    if chosen_feature != None:
+        break_loop = chosen_feature[1]()
 
-#if break_loop == True:
-#    break
+        if break_loop == True:
+            break
