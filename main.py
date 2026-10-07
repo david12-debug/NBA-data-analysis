@@ -19,8 +19,17 @@ def view_features():
     
     return False
 
+column_names = df.columns.tolist()
+
 def rank_column():
-    print("E")
+    chosen_input = input("\nEnter a column name: ").strip()
+
+    low_cols = {col.lower(): col for col in df.columns}
+
+    chosen_col = low_cols.get(chosen_input.lower())
+
+    print("\nchosen_col: ", chosen_col)
+    
     return False
 
 def longevity():
@@ -42,7 +51,7 @@ FEATURES = {
 view_features()
 
 while True:
-    chosen_input = input("\nEnter a number: ")
+    chosen_input = input("\nEnter a number: ").strip()
 
     chosen_feature = FEATURES.get(chosen_input)
 
@@ -50,4 +59,7 @@ while True:
         break_loop = chosen_feature[1]()
 
         if break_loop == True:
+            print("\nEnded program")
             break
+    else:
+        print("\nInvalid number")
