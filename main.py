@@ -28,7 +28,15 @@ def rank_column():
 
     chosen_col = low_cols.get(chosen_input.lower())
 
-    print("\nchosen_col: ", chosen_col)
+    print("\nTop 5:\n")
+
+    descending_df = df.sort_values(by=chosen_col, ascending=False).reset_index(drop=True)
+
+    top_five_list = descending_df[chosen_col].head(5).tolist()
+
+    for i, v in enumerate(top_five_list):
+        player_name = descending_df.at[i, "PLAYER"]
+        print(f"{i + 1}) {player_name}: {v}")
     
     return False
 
