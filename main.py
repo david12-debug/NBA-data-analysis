@@ -21,12 +21,17 @@ def view_features():
 
 column_names = df.columns.tolist()
 
-def rank_column():
+def handle_input():
     chosen_input = input("\nEnter a column name: ").strip()
 
     low_cols = {col.lower(): col for col in df.columns}
 
     chosen_col = low_cols.get(chosen_input.lower())
+
+    return chosen_col
+
+def rank_column():
+    chosen_col = handle_input()
 
     if chosen_col != None:
         print("\nTop 5:\n")
@@ -55,7 +60,7 @@ def rank_column():
     return False
 
 def longevity():
-    print("E")
+
     return False
 
 def ft_merchant():
