@@ -60,6 +60,12 @@ def rank_column():
     return False
 
 def longevity():
+    # Finds the top five and bottom five players in total minutes played over total games played
+    print("\nTop 5:\n")
+
+    descending_df = df.sort_values(by=df['MIN'] / df['GP'], ascending=False).reset_index(drop=True)
+
+    for i, v in enumerate()
 
     return False
 
