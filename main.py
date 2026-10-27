@@ -63,9 +63,32 @@ def longevity():
     # Finds the top five and bottom five players in total minutes played over total games played
     print("\nTop 5:\n")
 
-    descending_df = df.sort_values(by=df['MIN'] / df['GP'], ascending=False).reset_index(drop=True)
+    temp_df = df.copy()
 
-    for i, v in enumerate()
+    temp_df['Longevity'] = temp_df['MIN'] / temp_df['GP']
+
+    sorted_df = temp_df.sort_values(by='Longevity', ascending=False).reset_index(drop=True)
+
+    print("\nTop 5:\n")
+
+    top_five = sorted_df.head(5)
+
+    for i, row in top_five.iterrows():
+        player_name = row["PLAYER"]
+        longevityValue = row['Longevity']
+
+        print(f"{i + 1}) {player_name}: {longevityValue:.2f}")
+
+    
+    print("\nBottom 5:\n")
+
+    bottom_five = sorted_df.tail(5)
+
+    for i, row in bottom_five.iterrows():
+        player_name = row["PLAYER"]
+        longevityValue = row['Longevity']
+
+        print(f"{i + 1}) {player_name}: {longevityValue:.2f}")
 
     return False
 
